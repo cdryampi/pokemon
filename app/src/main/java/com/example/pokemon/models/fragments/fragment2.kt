@@ -1,6 +1,7 @@
 package com.example.pokemon.models.fragments
 
 import android.content.Context
+import android.location.GnssAntennaInfo.Listener
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +11,8 @@ import android.widget.Button
 import com.example.pokemon.R
 import com.example.pokemon.interfaces.OnFragmentActionsListener
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-
-class TestFragment : Fragment() {
+class fragment2 : Fragment() {
     // TODO: Rename and change types of parameters
     private var listener: OnFragmentActionsListener? = null
 
@@ -24,7 +22,6 @@ class TestFragment : Fragment() {
             listener = it.getSerializable("listener") as OnFragmentActionsListener
         }
     }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnFragmentActionsListener) {
@@ -36,7 +33,7 @@ class TestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.buttonFragmentTest).setOnClickListener {
+        view.findViewById<Button>(R.id.buttonFragmentTest2).setOnClickListener {
             listener?.onClickFragmentButton()
         }
     }
@@ -44,19 +41,30 @@ class TestFragment : Fragment() {
         super.onDetach()
         listener = null
     }
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test, container, false)
+        return inflater.inflate(R.layout.fragment_fragment2, container, false)
     }
 
     companion object {
-
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment fragment2.
+         */
+        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            TestFragment().apply {
+            fragment2().apply {
                 arguments = Bundle().apply {
                 }
             }

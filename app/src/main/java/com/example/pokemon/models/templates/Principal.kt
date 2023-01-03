@@ -2,6 +2,7 @@ package com.example.pokemon.models.templates
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +12,14 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import com.example.pokemon.PokemonBattle
 import com.example.pokemon.R
 import com.example.pokemon.controllers.PokemonControllerList
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
 import com.example.pokemon.models.Pokemon
+import com.example.pokemon.models.fragments.TestFragment
 
 class Principal() {
     // context invoker

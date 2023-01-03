@@ -7,6 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+
     <TextView
         android:id="@+id/tituloAtacanteMainActivity2"
         android:layout_width="365dp"
@@ -18,6 +20,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerAtacanteMainActivity" />
+
+
+
 
     <TextView
         android:id="@+id/tituloMainActivity"
@@ -33,6 +38,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
+
+
+
     <TextView
         android:id="@+id/tituloAtacanteMainActivity"
         android:layout_width="365dp"
@@ -45,6 +53,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tituloMainActivity" />
 
+
+
     <Spinner
         android:id="@+id/spinnerAtacanteMainActivity"
         android:layout_width="409dp"
@@ -54,7 +64,11 @@
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloAtacanteMainActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloAtacanteMainActivity"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+
 
     <Spinner
         android:id="@+id/spinnerDefensorMainActivity"
@@ -65,7 +79,11 @@
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloAtacanteMainActivity2" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloAtacanteMainActivity2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+
 
     <Button
         android:id="@+id/buttonBatallarMainActivity"
@@ -76,5 +94,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerDefensorMainActivity" />
+
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/FragmentTestMain"
+        android:name="com.example.pokemon.models.fragments.TestFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBatallarMainActivity"
+        tools:layout="@layout/fragment_test" />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/FragmentTestMain2"
+        android:name="com.example.pokemon.models.fragments.fragment2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FragmentTestMain"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout="@layout/fragment_fragment2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
