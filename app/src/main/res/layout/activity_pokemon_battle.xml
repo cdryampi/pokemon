@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tituloAtacantePokemonBattle">
 
         <TextView
-            android:id="@+id/nombrePokemonBattle"
+            android:id="@+id/nombrePokemonBattleAtacante"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
@@ -59,7 +59,7 @@
             android:textSize="34sp" />
 
         <TextView
-            android:id="@+id/tipoPokemonBattle"
+            android:id="@+id/tipoPokemonBattleAtacante"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="48dp"
@@ -74,7 +74,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/vidaPokemonBattle"
+            android:id="@+id/vidaPokemonBattleAtacante"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="64dp"
@@ -114,7 +114,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tituloDefensorPokemonBattle">
 
         <TextView
-            android:id="@+id/nombreGanadorPokemonResultado"
+            android:id="@+id/nombreDefensorPokemonResultado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
@@ -129,7 +129,7 @@
             android:textSize="34sp" />
 
         <TextView
-            android:id="@+id/tipoGanadorPokemonResultado"
+            android:id="@+id/tipoDefensorPokemonResultado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="48dp"
@@ -144,7 +144,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/vidaGanadorPokemonResultado"
+            android:id="@+id/vidaDefensorPokemonResultado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="64dp"
