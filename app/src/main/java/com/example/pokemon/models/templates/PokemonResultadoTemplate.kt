@@ -49,8 +49,8 @@ class PokemonResultadoTemplate {
                 }
             var auxAtacante: Pokemon? = auxList?.get(0)
             var auxDefensor: Pokemon? = auxList?.get(1)
-            println("pokemon atacante: ${auxAtacante?.nombre} - vida: ${auxAtacante?.vida}")
-            println("pokemon defensor: ${auxDefensor?.nombre} - vida: ${auxDefensor?.vida}")
+            //println("pokemon atacante: ${auxAtacante?.nombre} - vida: ${auxAtacante?.vida}")
+            //println("pokemon defensor: ${auxDefensor?.nombre} - vida: ${auxDefensor?.vida}")
 
             if (pokemoncontrollerBattleDataAD.getAtaquante()?.vida ?:0  > 0) {
                 nombreGanadorPokemonResultado.text = pokemoncontrollerBattleDataAD.getAtaquante()?.nombre ?: "nulo"

@@ -4,6 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.example.pokemon.enums.PokemonTipo
 
+@kotlinx.serialization.Serializable
 data class PokemonBase(val nombre:String, val tipo:PokemonTipo, val vida:Int, val ataque:Int, val defensa:Int):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),

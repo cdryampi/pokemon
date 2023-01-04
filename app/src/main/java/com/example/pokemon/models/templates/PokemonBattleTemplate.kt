@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.example.pokemon.BatallaTurno
 import com.example.pokemon.PokemonResultado
 import com.example.pokemon.R
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
@@ -28,7 +29,7 @@ class PokemonBattleTemplate {
         var pokemoncontrollerBattleDataAD = PokemoncontrollerBattleDataAD()
 
         var intentPokemonResultado = Intent(this.context, PokemonResultado::class.java)
-
+        var intentBatallaTurno = Intent(this.context, BatallaTurno::class.java)
 
         if (pokemonAtacante != null) {
             pokemoncontrollerBattleDataAD.setPokemonAtacanteParcelable(pokemonAtacante)
@@ -65,9 +66,12 @@ class PokemonBattleTemplate {
 
         atacarButton.setOnClickListener {
 
-            intentPokemonResultado.putExtra("pokemonAtacante", pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable() as Parcelable)
-            intentPokemonResultado.putExtra("pokemonDefensor", pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable() as Parcelable)
-            context.startActivity(intentPokemonResultado)
+            //intentPokemonResultado.putExtra("pokemonAtacante", pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable() as Parcelable)
+            //intentPokemonResultado.putExtra("pokemonDefensor", pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable() as Parcelable)
+            intentBatallaTurno.putExtra("pokemonAtacante", pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable() as Parcelable)
+            intentBatallaTurno.putExtra("pokemonDefensor", pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable() as Parcelable)
+            context.startActivity(intentBatallaTurno)
+            //context.startActivity(intentPokemonResultado)
 
         }
         println("intentData: ${pokemoncontrollerBattleDataAD.getAtaquante()}" )

@@ -33,11 +33,7 @@ class MainActivity : AppCompatActivity(), OnFragmentActionsListener {
         setContentView(viewGroup)
 
 
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<TestFragment>(R.id.FragmentTestMain)
-            add<fragment2>(R.id.FragmentTestMain2)
-        }
+
 
         //pokemoncontrollerBattleDataAD.setDefensor(pokemonControllerList.getPokemonList()[3])
 

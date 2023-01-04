@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Pokemon"
         tools:targetApi="31">
         <activity
+            android:name=".BatallaTurno"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PokemonResultado"
             android:exported="false">
             <meta-data
