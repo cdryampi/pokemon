@@ -22,7 +22,7 @@ import com.example.pokemon.models.fragments.fragment2
 import com.example.pokemon.models.templates.Principal
 
 class MainActivity : AppCompatActivity(), OnFragmentActionsListener {
-    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
@@ -31,10 +31,7 @@ class MainActivity : AppCompatActivity(), OnFragmentActionsListener {
         // invocar todo
         var principalTemplate = Principal()
         principalTemplate.context = this
-        var viewGroup = principalTemplate.render(principalTemplate.context)
-        setContentView(viewGroup)
-
-
+        setContentView(principalTemplate.render())
 
 
         //pokemoncontrollerBattleDataAD.setDefensor(pokemonControllerList.getPokemonList()[3])

@@ -18,18 +18,22 @@ import com.example.pokemon.PokemonBattle
 import com.example.pokemon.R
 import com.example.pokemon.controllers.PokemonControllerList
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
+import com.example.pokemon.databinding.ActivityMainBinding
 import com.example.pokemon.models.Pokemon
 import com.example.pokemon.models.fragments.TestFragment
 
 class Principal() {
     // context invoker
-
+    private lateinit var binding: ActivityMainBinding
     lateinit var context: Context
 
-    fun render(context:Context): ViewGroup {
+    fun render(): ViewGroup {
+
+        // inflate principal
+        binding = ActivityMainBinding.inflate(this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+
         // call Inflate
-        var inflate = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var viewGroup = inflate.inflate(R.layout.activity_main, null) as ViewGroup
+        var dataContext = binding.root
         val intentPokemonBattle = Intent(this.context, PokemonBattle::class.java)
 
         // instanciar variables de la vista
@@ -37,9 +41,6 @@ class Principal() {
         val POKEMON_ATACANTE = "pokemonAtacante"
         val POKEMON_DEFENSOR = "pokemonDefensor"
 
-        var spinnerAtacante: Spinner = viewGroup.findViewById(R.id.spinnerAtacanteMainActivity)
-        var spinnerDefensor: Spinner = viewGroup.findViewById(R.id.spinnerDefensorMainActivity)
-        var buttonBatallar = viewGroup.findViewById<View>(R.id.buttonBatallarMainActivity)
 
         var pokemonControllerList = PokemonControllerList()
         var pokemoncontrollerBattleDataAD = PokemoncontrollerBattleDataAD()
@@ -50,11 +51,11 @@ class Principal() {
         var adapter1 = ArrayAdapter(this.context, android.R.layout.simple_spinner_item, pokemonControllerList.getPokemonList())
         var adapter2 = ArrayAdapter(this.context, android.R.layout.simple_spinner_item, pokemonControllerList.getPokemonList())
 
-        spinnerAtacante.adapter = adapter1
+        binding.spinnerAtacanteMainActivity.adapter = adapter1
 
-        spinnerDefensor.adapter = adapter2
+        binding.spinnerDefensorMainActivity.adapter = adapter2
 
-        spinnerAtacante.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinnerAtacanteMainActivity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,
@@ -72,7 +73,7 @@ class Principal() {
                 println("saliendo del spinner")
             }
         }
-        spinnerDefensor.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinnerDefensorMainActivity.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
                 view: View,
@@ -90,14 +91,14 @@ class Principal() {
                 println("saliendo del spinner")
             }
         }
-        buttonBatallar.setOnClickListener {
+        binding.buttonBatallarMainActivity.setOnClickListener {
             intentPokemonBattle.putExtra(POKEMON_ATACANTE, pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable() as Parcelable)
             intentPokemonBattle.putExtra(POKEMON_DEFENSOR, pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable() as Parcelable)
             startActivity(this.context, intentPokemonBattle, null)
         }
 
 
-        return viewGroup
+        return this.binding.root
     }
 
 
