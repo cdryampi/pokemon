@@ -16,7 +16,7 @@ class PokemonBattle : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         var pokemonBattle = PokemonBattleTemplate()
         pokemonBattle.context = this
-        setContentView(pokemonBattle.render(this, intent))
+        setContentView(pokemonBattle.render(intent))
 
 
 

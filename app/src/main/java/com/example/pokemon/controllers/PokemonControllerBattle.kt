@@ -27,6 +27,8 @@ class PokemonControllerBattle {
 
         while (atacante?.vida ?:0  > 0 && defensor?.vida ?: 0 > 0) {
             var efectividad = 1.0
+            var auxVidaDefensor = 0
+            var auxVidaAtacante = 0
 
             if (atacante.vida > 0 && defensor.vida >0) {
 
@@ -43,15 +45,15 @@ class PokemonControllerBattle {
 
                     diferencia = ((10..50).random()) +((defensor.ataque / atacante.defensa) * efectividad.toInt()).toInt()
                     defensor.vida -= diferencia
+                    auxVidaDefensor = diferencia
 
-
-                    println("vida atacante ${atacante.vida}")
-                    println("vida defensor ${defensor.vida}")
+                    //println("vida atacante ${atacante.vida}")
+                    //println("vida defensor ${defensor.vida}")
 
                     if (defensor.vida<0){
                         defensor.vida = 0
+                        atacante.win = true
                         resultado.add(atacante)
-                        resultado.add(defensor)
                         println("Pokemon defensor ${defensor.nombre} ha sido derrotado")
                         return resultado
                     }
@@ -72,31 +74,39 @@ class PokemonControllerBattle {
 
                     diferencia = ((10..50).random()) +((defensor.ataque / atacante.defensa) * efectividad.toInt()).toInt()
                     atacante.vida -= diferencia
+                    auxVidaAtacante = diferencia
 
-
-                    println("vida atacante ${atacante.vida}")
-                    println("vida defensor ${defensor.vida}")
+                    //println("vida atacante ${atacante.vida}")
+                    //println("vida defensor ${defensor.vida}")
 
 
                     if (atacante.vida<0){
                         atacante.vida = 0
-                        resultado.add(atacante)
                         resultado.add(defensor)
                         println("Pokemon atacante ${atacante.nombre} ha sido derrotado")
                         return resultado
+                    }else{
+                        if (auxVidaAtacante>auxVidaDefensor){
+                            resultado.add(
+                                Pokemon(
+                                    atacante.nombre, atacante.tipo, atacante.vida, atacante.ataque, atacante.defensa, atacante.url, true
+                                    )
+                            )
+                        }else{
+                            resultado.add(
+                                Pokemon(
+                                    defensor.nombre, defensor.tipo, defensor.vida, defensor.ataque, defensor.defensa, defensor.url, false
+                                )
+                            )
+                        }
                     }
                 }
 
         }
 
-
-
-
-
-
         }
-        resultado.add(atacante)
-        resultado.add(defensor)
+
+
         return resultado
     }
 }

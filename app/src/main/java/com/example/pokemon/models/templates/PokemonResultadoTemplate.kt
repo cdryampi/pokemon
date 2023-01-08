@@ -8,19 +8,24 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.pokemon.MainActivity
 import com.example.pokemon.R
+import com.example.pokemon.adapters.ResultadoAdapter
 import com.example.pokemon.controllers.PokemonControllerBattle
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
 import com.example.pokemon.data.PokemonBase
+import com.example.pokemon.databinding.ActivityMainBinding
+import com.example.pokemon.databinding.ActivityPokemonResultadoBinding
 import com.example.pokemon.enums.PokemonAtaque
 import com.example.pokemon.models.Pokemon
 
 class PokemonResultadoTemplate {
-
+    lateinit var binding: ActivityPokemonResultadoBinding
     lateinit var context: Context
+    lateinit var listaPokemos: List<Pokemon>
 
     fun render(context: Context,intentPadre:Intent): ViewGroup {
-        var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var viewGroup = inflater.inflate(R.layout.activity_pokemon_resultado, null) as ViewGroup
+        // Inicializar el binding
+        binding = ActivityPokemonResultadoBinding.inflate(LayoutInflater.from(context))
+        this.context = context
 
         val pokemoncontrollerBattleDataAD = PokemoncontrollerBattleDataAD()
         val pokemonControllerBattle = PokemonControllerBattle()
@@ -28,12 +33,8 @@ class PokemonResultadoTemplate {
 
         var pokemonAtacante = intentPadre.getParcelableExtra<PokemonBase>("pokemonAtacante")
         var pokemonDefensor = intentPadre.getParcelableExtra<PokemonBase>("pokemonDefensor")
-        var volver: Button = viewGroup.findViewById(R.id.volver)
 
 
-        var nombreGanadorPokemonResultado: TextView = viewGroup.findViewById(R.id.nombreDefensorPokemonResultado)
-        var tipoGanadorPokemonResultado: TextView = viewGroup.findViewById(R.id.tipoDefensorPokemonResultado)
-        var vidaGanadorPokemonResultado: TextView = viewGroup.findViewById(R.id.vidaDefensorPokemonResultado)
 
 
 
@@ -47,32 +48,28 @@ class PokemonResultadoTemplate {
                     PokemonAtaque.BASICO,
                     PokemonAtaque.BASICO)
                 }
-            var auxAtacante: Pokemon? = auxList?.get(0)
-            var auxDefensor: Pokemon? = auxList?.get(1)
+            if (auxList != null) {
+                listaPokemos = auxList
+            }
+            println()
             //println("pokemon atacante: ${auxAtacante?.nombre} - vida: ${auxAtacante?.vida}")
             //println("pokemon defensor: ${auxDefensor?.nombre} - vida: ${auxDefensor?.vida}")
 
-            if (pokemoncontrollerBattleDataAD.getAtaquante()?.vida ?:0  > 0) {
-                nombreGanadorPokemonResultado.text = pokemoncontrollerBattleDataAD.getAtaquante()?.nombre ?: "nulo"
-                tipoGanadorPokemonResultado.text = pokemoncontrollerBattleDataAD.getAtaquante()?.tipo.toString()
-                vidaGanadorPokemonResultado.text = pokemoncontrollerBattleDataAD.getAtaquante()?.vida.toString()
-            } else {
-                nombreGanadorPokemonResultado.text = pokemoncontrollerBattleDataAD.getDefensor()?.nombre ?: "nulo"
-                tipoGanadorPokemonResultado.text = pokemoncontrollerBattleDataAD.getDefensor()?.tipo.toString()
-                vidaGanadorPokemonResultado.text = pokemoncontrollerBattleDataAD.getDefensor()?.vida.toString()
-            }
+
         }
 
 
 
 
-
-
-
-
-        volver.setOnClickListener {
+        binding.volver.setOnClickListener {
             this.context.startActivity(intentVolver)
         }
-        return viewGroup
+        initRecyclerView()
+        return binding.root
+    }
+    fun initRecyclerView(){
+        val recyclerView = binding.recyclerView
+        recyclerView.adapter = ResultadoAdapter(this.context, listaPokemos)
+        recyclerView.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this.context)
     }
 }

@@ -4,17 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
-import android.widget.Toast
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
 import com.example.pokemon.data.PokemonBase
 import com.example.pokemon.interfaces.OnFragmentActionsListener
-import com.example.pokemon.models.Pokemon
 import com.example.pokemon.models.fragments.GanadorBatallaTurno
 import com.example.pokemon.models.fragments.GanadorBatallaTurno.Companion.newInstance
-import com.example.pokemon.models.fragments.TestFragment
-import com.example.pokemon.models.fragments.fragment2
 
 class BatallaTurno : AppCompatActivity(), OnFragmentActionsListener {
 

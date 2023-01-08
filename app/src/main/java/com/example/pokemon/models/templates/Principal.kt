@@ -2,25 +2,18 @@ package com.example.pokemon.models.templates
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import com.example.pokemon.PokemonBattle
-import com.example.pokemon.R
 import com.example.pokemon.controllers.PokemonControllerList
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
 import com.example.pokemon.databinding.ActivityMainBinding
 import com.example.pokemon.models.Pokemon
-import com.example.pokemon.models.fragments.TestFragment
 
 class Principal() {
     // context invoker
@@ -33,7 +26,7 @@ class Principal() {
         binding = ActivityMainBinding.inflate(this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
 
         // call Inflate
-        var dataContext = binding.root
+
         val intentPokemonBattle = Intent(this.context, PokemonBattle::class.java)
 
         // instanciar variables de la vista

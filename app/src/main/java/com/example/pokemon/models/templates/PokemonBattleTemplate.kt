@@ -17,20 +17,24 @@ import com.example.pokemon.enums.PokemonTipo
 class PokemonBattleTemplate {
 
     lateinit var context: Context
+    private lateinit var binding: com.example.pokemon.databinding.ActivityPokemonBattleBinding
 
-    fun render(context: Context, intentPadre:Intent):ViewGroup{
-        var inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var viewGroup = inflater.inflate(R.layout.activity_pokemon_battle, null) as ViewGroup
+    fun render(intentPadre:Intent):ViewGroup{
 
+        // Inicializar el binding
+        binding = com.example.pokemon.databinding.ActivityPokemonBattleBinding.inflate(LayoutInflater.from(context))
 
-        this.context = context
+        //this.context = context
+        // coger los datos del intentPadre
         var pokemonAtacante = intentPadre.getParcelableExtra<PokemonBase>("pokemonAtacante")
         var pokemonDefensor = intentPadre.getParcelableExtra<PokemonBase>("pokemonDefensor")
+        // inicializar el controlador de la batalla
         var pokemoncontrollerBattleDataAD = PokemoncontrollerBattleDataAD()
-
+        // inistanciar los controlador de vistas
         var intentPokemonResultado = Intent(this.context, PokemonResultado::class.java)
         var intentBatallaTurno = Intent(this.context, BatallaTurno::class.java)
 
+        // añadir los datos de los pokemon al controlador de la batalla
         if (pokemonAtacante != null) {
             pokemoncontrollerBattleDataAD.setPokemonAtacanteParcelable(pokemonAtacante)
         }
@@ -39,44 +43,34 @@ class PokemonBattleTemplate {
         }
 
 
-        var nombrePokemonBattleAtacante: TextView = viewGroup.findViewById(R.id.nombrePokemonBattleAtacante)
-        var nombrePokemonBattleDefensor: TextView = viewGroup.findViewById(R.id.nombreDefensorPokemonResultado)
-        var tipoPokemonAtaque: TextView = viewGroup.findViewById(R.id.tipoPokemonBattleAtacante)
-        var tipoPokemonDefensor: TextView = viewGroup.findViewById(R.id.tipoDefensorPokemonResultado)
-        var vidaPokemonAtaque: TextView = viewGroup.findViewById(R.id.vidaPokemonBattleAtacante)
-        var vidaPokemonDefensor: TextView = viewGroup.findViewById(R.id.vidaDefensorPokemonResultado)
-
-
-        var atacarButton: Button = viewGroup.findViewById(R.id.atacarPokemonBattle)
 
         // atacante datos
-        nombrePokemonBattleAtacante.text =
-            pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable()?.nombre ?: "nulo"
-        tipoPokemonAtaque.text =
-            (pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable()?.tipo ?: PokemonTipo.FUEGO).toString()
-        vidaPokemonAtaque.text =
-            pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable()?.vida.toString()
-        // defensor datos
-        nombrePokemonBattleDefensor.text =
-            pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable()?.nombre ?: "nulo"
-        tipoPokemonDefensor.text =
-            (pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable()?.tipo ?: PokemonTipo.FUEGO).toString()
-        vidaPokemonDefensor.text =
-            pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable()?.vida.toString()
+        binding.nombrePokemonBattleAtacante.text = pokemoncontrollerBattleDataAD.getAtaquante()?.nombre ?: "No hay pokemon"
+        binding.vidaPokemonBattleAtacante.text = pokemoncontrollerBattleDataAD.getAtaquante()?.vida.toString() ?: "No hay pokemon"
+        binding.tipoPokemonBattleAtacante.text = pokemoncontrollerBattleDataAD.getAtaquante()?.tipo.toString() ?: "No hay pokemon"
 
-        atacarButton.setOnClickListener {
+        // defensor datos
+        binding.nombreDefensorPokemonResultado.text = pokemoncontrollerBattleDataAD.getDefensor()?.nombre ?: "No hay pokemon"
+
+        binding.vidaDefensorPokemonResultado.text = pokemoncontrollerBattleDataAD.getDefensor()?.vida.toString() ?: "No hay pokemon"
+        binding.tipoDefensorPokemonResultado.text = pokemoncontrollerBattleDataAD.getDefensor()?.tipo.toString() ?: "No hay pokemon"
+
+
+        // boton de atacar
+
+        binding.atacarPokemonBattle.setOnClickListener {
 
             //intentPokemonResultado.putExtra("pokemonAtacante", pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable() as Parcelable)
             //intentPokemonResultado.putExtra("pokemonDefensor", pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable() as Parcelable)
-            intentBatallaTurno.putExtra("pokemonAtacante", pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable() as Parcelable)
-            intentBatallaTurno.putExtra("pokemonDefensor", pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable() as Parcelable)
-            context.startActivity(intentBatallaTurno)
+            intentPokemonResultado.putExtra("pokemonAtacante", pokemoncontrollerBattleDataAD.getPokemonAtacanteParcelable() as Parcelable)
+            intentPokemonResultado.putExtra("pokemonDefensor", pokemoncontrollerBattleDataAD.getPokemonDefensorParcelable() as Parcelable)
+            context.startActivity(intentPokemonResultado)
             //context.startActivity(intentPokemonResultado)
 
         }
         println("intentData: ${pokemoncontrollerBattleDataAD.getAtaquante()}" )
         println("intentData: ${pokemoncontrollerBattleDataAD.getDefensor()}")
 
-        return viewGroup
+        return this.binding.root
     }
 }

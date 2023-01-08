@@ -25,7 +25,8 @@ private var ARG_GANADOR:Pokemon = Pokemon(
     0,
     0,
     0,
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+    false
 )
 
 class GanadorBatallaTurno : Fragment() {

@@ -19,7 +19,8 @@ class PokemoncontrollerBattleDataAD(var ataquante: Pokemon? = null, var defensor
                     ataquante.vida,
                     ataquante.defensa,
                     ataquante.ataque,
-                    ataquante.url
+                    ataquante.url,
+                    ataquante.win
 
                 )
 
@@ -34,7 +35,8 @@ class PokemoncontrollerBattleDataAD(var ataquante: Pokemon? = null, var defensor
                 this.pokemonAtacanteParcelable!!.vida,
                 this.pokemonAtacanteParcelable!!.defensa,
                 this.pokemonAtacanteParcelable!!.ataque,
-                this.pokemonAtacanteParcelable!!.url
+                this.pokemonAtacanteParcelable!!.url,
+                this.pokemonAtacanteParcelable!!.win
             )
         }
 
@@ -47,7 +49,8 @@ class PokemoncontrollerBattleDataAD(var ataquante: Pokemon? = null, var defensor
                 this.pokemonDefensorParcelable!!.vida,
                 this.pokemonDefensorParcelable!!.defensa,
                 this.pokemonDefensorParcelable!!.ataque,
-                this.pokemonDefensorParcelable!!.url
+                this.pokemonDefensorParcelable!!.url,
+                this.pokemonDefensorParcelable!!.win
             )
         }
 
@@ -62,7 +65,8 @@ class PokemoncontrollerBattleDataAD(var ataquante: Pokemon? = null, var defensor
                     defensor.vida,
                     defensor.defensa,
                     defensor.ataque,
-                    defensor.url
+                    defensor.url,
+                    defensor.win
                 )
 
         }
