@@ -5,13 +5,14 @@ import android.os.Parcelable
 import com.example.pokemon.enums.PokemonTipo
 
 @kotlinx.serialization.Serializable
-data class PokemonBase(val nombre:String, val tipo:PokemonTipo, val vida:Int, val ataque:Int, val defensa:Int):Parcelable {
+data class PokemonBase(val nombre:String, val tipo:PokemonTipo, val vida:Int, val ataque:Int, val defensa:Int, val url:String):Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         PokemonTipo.valueOf(parcel.readString().toString()),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
+        parcel.readString().toString()
     ) {
     }
 
@@ -21,6 +22,7 @@ data class PokemonBase(val nombre:String, val tipo:PokemonTipo, val vida:Int, va
         parcel.writeInt(vida)
         parcel.writeInt(ataque)
         parcel.writeInt(defensa)
+        parcel.writeString(url)
     }
 
     override fun describeContents(): Int {

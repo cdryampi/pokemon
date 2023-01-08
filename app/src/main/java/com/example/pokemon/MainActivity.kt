@@ -14,6 +14,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.example.pokemon.controllers.PokemonControllerList
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
+import com.example.pokemon.databinding.ActivityMainBinding
 import com.example.pokemon.interfaces.OnFragmentActionsListener
 import com.example.pokemon.models.Pokemon
 import com.example.pokemon.models.fragments.TestFragment
@@ -21,6 +22,7 @@ import com.example.pokemon.models.fragments.fragment2
 import com.example.pokemon.models.templates.Principal
 
 class MainActivity : AppCompatActivity(), OnFragmentActionsListener {
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)

@@ -18,7 +18,7 @@ abstract class PokemonMain : ResumenPokemon(), PokemonDefensa, PokemonAtaque {
     abstract var vida: Int
     abstract var defensa: Int
     abstract var ataque: Int
-
+    abstract var url: String
     override fun estado(): String {
         return if (vida > 0) "vivo" else "muerto"
     }
@@ -29,7 +29,9 @@ class Pokemon(
     override var tipo: PokemonTipo,
     override var vida: Int,
     override var ataque: Int,
-    override var defensa: Int
+    override var defensa: Int,
+    override var url: String
+
 
 
 ) : PokemonMain() {

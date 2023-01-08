@@ -21,8 +21,8 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentBatallaTurno"
         android:name="com.example.pokemon.models.fragments.GanadorBatallaTurno"
-        android:layout_width="380dp"
-        android:layout_height="154dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

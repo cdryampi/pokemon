@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.pokemon.R
 import com.example.pokemon.controllers.PokemoncontrollerBattleDataAD
 import com.example.pokemon.data.PokemonBase
@@ -22,7 +24,8 @@ private var ARG_GANADOR:Pokemon = Pokemon(
     PokemonTipo.TRUENO,
     0,
     0,
-    0
+    0,
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
 )
 
 class GanadorBatallaTurno : Fragment() {
@@ -59,6 +62,8 @@ class GanadorBatallaTurno : Fragment() {
         view.findViewById<TextView>(R.id.ganadorTurno).text = ARG_GANADOR.nombre
         view.findViewById<TextView>(R.id.GanadorVida).text = ARG_GANADOR.vida.toString()
         view.findViewById<TextView>(R.id.ganadorMensaje).text = "tu pokemon ha ganado el turno"
+        var image = view.findViewById<ImageView>(R.id.ImagePokemon)
+        Glide.with(this).load(ARG_GANADOR.url).into(image)
 
     }
     override fun onDetach() {
@@ -101,6 +106,7 @@ class GanadorBatallaTurno : Fragment() {
             argGanador.ataque = param1.getAtaquante()?.ataque ?: 0
             argGanador.defensa = param1.getAtaquante()?.defensa ?: 0
             argGanador.tipo = param1.getAtaquante()?.tipo ?: PokemonTipo.TRUENO
+            argGanador.url = param1.getAtaquante()?.url ?: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
         }
 
 
