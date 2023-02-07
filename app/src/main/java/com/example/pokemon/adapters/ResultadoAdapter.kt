@@ -13,12 +13,7 @@ class ResultadoAdapter(context: Context, listaPokemons:List<Pokemon>): RecyclerV
     private val inflater = LayoutInflater.from(context)
     private var items:List<Pokemon> = listaPokemons
 
-    fun setItems(items:List<Pokemon>){
-        this.items = items
-    }
-    fun addItem(item:Pokemon){
-        this.items = this.items + item
-    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderResultadoItem {
         return ViewHolderResultadoItem(inflater.inflate(R.layout.list_resultitem, parent, false))
     }
